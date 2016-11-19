@@ -1,0 +1,2 @@
+flask>0.10
+flask_bootstrap>3.3.0.0

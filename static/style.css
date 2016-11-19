@@ -1,0 +1,30 @@
+#fourlambda {
+    font-family: 'Jura', sans-serif;
+    color: #fff9ee;
+    font-size: 72px
+}
+
+.jumbotron {
+    background-color: #49525a;
+}
+
+html, body {
+    height: 100%;
+    background-color: #272a2e;
+}
+
+#contact {
+    width: 12%;
+    color: rgb(192, 219, 231)
+}
+
+a {
+    color: yellow;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
