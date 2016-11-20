@@ -9,11 +9,13 @@ RUN yum -y makecache all \
         gcc \
         python-pip \
         python-devel \
+        pcre-devel \
     && yum clean all
 
 ADD . /var/4l/www
 WORKDIR /var/4l/www
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+ENTRYPOINT ["uwsgi"]
+CMD ["app.ini"]
+
