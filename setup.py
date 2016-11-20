@@ -10,6 +10,11 @@ setup(
     description='Web. landing for 4Lambda.',
     install_requires=[
         'flask>0.10',
-        'flask_bootstrap>3.3.0.0'
+        'flask_bootstrap>3.3.0.0',
+        'uwsgi>2.2.0'
+    ],
+    tests_require=[
+        'flake8',
+        'tox'
     ]
 )
