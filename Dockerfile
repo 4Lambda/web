@@ -34,12 +34,10 @@ RUN pip install -r app/requirements.txt
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Add configuration files to installed packages.
-RUN echo "deamon off;" >> /etc/nginx/nginx.conf \
-    rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/
+COPY nginx.conf /etc/nginx/
 COPY uwsgi.ini /etc/uwsgi/
 COPY supervisord.conf /etc/supervisor/conf.d/
 
 # Start the secure gateway.
-ENTRYPOINT ["bash"]
-CMD ["supervisord"]
+ENTRYPOINT
+CMD ["/usr/bin/supervisord"]
