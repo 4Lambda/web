@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Russell Bunch <wm@4lambda.io>
+MAINTAINER 4Lambda Developers <d@4lambda.io>
 
 EXPOSE 80
 
