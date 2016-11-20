@@ -17,5 +17,6 @@ def no(attempt):
     app.logger.debug('Denied attempt for: {0}', attempt)
     return redirect('/', 307)
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5200)
+    app.run()
