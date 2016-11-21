@@ -3,7 +3,7 @@ FROM centos:7
 MAINTAINER 4Lambda Developers <d@4lambda.io>
 
 # HTTP.
-EXPOSE 80
+EXPOSE 80 443
 
 # Setup gpg keys for yum.
 RUN  rpm --import http://mirror.centos.org/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7 && \
@@ -38,6 +38,8 @@ COPY nginx.conf /etc/nginx/
 COPY uwsgi.ini /etc/uwsgi/
 COPY supervisord.conf /etc/supervisor/conf.d/
 
+# Add volume for security things.
+VOLUME /etc/pki/4l
+
 # Start the secure gateway.
-ENTRYPOINT
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "supervisord.conf"]
