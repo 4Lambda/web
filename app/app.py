@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import redirect
+from flask import request
 from flask import make_response
 from flask_bootstrap import Bootstrap
 from datetime import datetime
@@ -12,7 +13,7 @@ Bootstrap(app)
 
 @app.route('/', methods=['GET'])
 def landing():
-    return render_template('index.html')
+    return render_template('index.html', remote_address=request.remote_addr)
 
 
 @app.route('/<path:attempt>')
