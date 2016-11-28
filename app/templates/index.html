@@ -7,6 +7,20 @@
 <meta name="msapplication-TileImage" content="{{ url_for('static', filename='favicons/ms-icon-144x144.png') }}">
 <meta name="theme-color" content="#ffffff">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!--OPEN GRAPH-->
+<meta property="og:title" content="4&#955;'s Open Graph Protocol"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://www.4lambda.io"/>
+<meta property="og:image" content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
+<meta property="fb:admins" content="rustydb"/>
+<meta property="og:site_name" content="4&#955;"/>
+<meta property="og:description" content="{{ summary }}"/>
+<!--TWITTER-->
+<meta name="twitter:card" content="{{ summary }}"/>
+<meta name="twitter:site" content="@rbunch"/>
+<meta name="twitter:title" content="4&#955;"/>
+<meta name="twitter:description" content="4&#955; I/O"/>
+<meta name="twitter:image" content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
 {% endblock %}
 {% block styles %}
 {{super()}}
@@ -34,6 +48,22 @@
 <link rel="manifest" href="{{ url_for('static', filename='favicons/manifest.json') }}">
 {% endblock %}
 {% block content %}
+<div id="fb-root"></div>
+<script async>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1342164295828378";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+    if (top != self) {
+        window.document.write("<div style='background:black;opacity:0.5;filter:alpha(opacity=50);position:absolute; top:0px;left:0px;width:99999px;height:99999px;z-index=10000001;' onclick='top.location.href=window.location.href'><div>")
+    }
+</script>
 <div class="jumbotron vertical-center">
     <div class="container-fluid">
         <div class="row">
