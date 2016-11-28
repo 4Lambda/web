@@ -13,6 +13,8 @@ setup(
         'flask_bootstrap>3.3.0.0',
         'uwsgi>2.2.0',
         'supervisor>3.3.0',
+        'flask_cache>0.13.0',
+        'flask_compress>1.3.0',
     ],
     tests_require=[
         'flake8',
