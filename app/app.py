@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import redirect
 from flask import request
+from flask import send_file
 from flask import make_response
 from flask_cache import Cache
 from flask_compress import Compress
@@ -32,6 +33,11 @@ def landing():
 def no(attempt):
     app.logger.debug('Denied attempt for: {0}', attempt)
     return redirect('/', 307)
+
+
+@app.route('/robots.txt', methods=['GET'])
+def robots():
+    return send_file('robots.txt')
 
 
 @app.route('/sitemap.xml', methods=['GET'])
