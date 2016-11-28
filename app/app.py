@@ -23,7 +23,7 @@ Cache(app)
 @app.route('/', methods=['GET'])
 def landing():
     return render_template('index.html',
-                           remote_address=request.remote_addr,
+                           remote_address=request.headers.get('X-Real-IP'),
                            summary="Provides consulting and management of computer technology."
                            )
 
