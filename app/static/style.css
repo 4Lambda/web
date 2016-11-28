@@ -22,11 +22,11 @@ a {
     color: yellow;
 }
 
-.well {
-    background: rgb(0, 0, 0);
+#terminal {
     color: #00FFFF;
     font-family: "Source Code Pro Medium";
-    width: 380pt;
+    vertical-align: bottom;
+    background-color: #2E2F30;
 }
 
 .vertical-center {
