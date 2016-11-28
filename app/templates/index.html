@@ -3,11 +3,14 @@
 {% block title %}4&#955;{% endblock %}
 {% block metas %}
 <meta name="description" content="4444"/>
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="{{ url_for('static', filename='favicons/ms-icon-144x144.png') }}">
+<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 {% endblock %}
 {% block styles %}
 {{super()}}
 <!--STYLE-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 <!--FONTS-->
 <link href="https://fonts.googleapis.com/css?family=Jura:500,400" rel="stylesheet" type="text/css">
@@ -29,9 +32,6 @@
 <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicons/favicon-96x96.png') }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
 <link rel="manifest" href="{{ url_for('static', filename='favicons/manifest.json') }}">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="{{ url_for('static', filename='favicons/ms-icon-144x144.png') }}">
-<meta name="theme-color" content="#ffffff">
 {% endblock %}
 {% block content %}
 <div class="jumbotron vertical-center">
