@@ -35,10 +35,8 @@ def robots():
 
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
-    """Generate sitemap.xml. Makes a list of urls and date modified."""
     pages = []
     ten_days_ago = datetime.now() - timedelta(days=10)
-    # static pages
     for rule in app.url_map.iter_rules():
         if "GET" in rule.methods and len(rule.arguments) == 0:
             pages.append(
