@@ -23,8 +23,12 @@ Cache(app)
 
 @app.route('/', methods=['GET'])
 def landing():
+    if request.headers.getlist("X-Forwarded-For"):
+       ip = request.headers.getlist("X-Forwarded-For")[0]
+    else:
+       ip = request.remote_addr
     return render_template('index.html',
-                           remote_address=request.headers.get('X-Real-IP'),
+                           ip=ip,
                            summary="Provides consulting and management of computer technology."
                            )
 
