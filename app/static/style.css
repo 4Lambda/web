@@ -24,7 +24,8 @@ a {
 
 #terminal {
     color: #211f28;
-    font-family: "Source Code Pro Medium";
+    font-family: 'VT323', monospace;
+    font-size: 20px;
     vertical-align: bottom;
     background-color: #bbf060;
     border-radius: 5px;
