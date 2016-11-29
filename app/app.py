@@ -4,7 +4,6 @@ from flask import redirect
 from flask import request
 from flask import send_file
 from flask import make_response
-from flask_cache import Cache
 from flask_compress import Compress
 from flask_bootstrap import Bootstrap
 from datetime import datetime
@@ -15,22 +14,13 @@ app.config['COMPRESS_MIMETYPES'] = ['text/html', 'text/css', 'text/xml', 'applic
 app.config['COMPRESS_LEVEL'] = 6
 app.config['COMPRESS_MIN_SIZE '] = 500
 app.config['CACHE_TYPE'] = 'simple'
-cache = Cache(app)
 Bootstrap(app)
 Compress(app)
-Cache(app)
 
 
 @app.route('/', methods=['GET'])
 def landing():
-    if request.headers.getlist("X-Forwarded-For"):
-       ip = request.headers.getlist("X-Forwarded-For")[0]
-    else:
-       ip = request.remote_addr
-    return render_template('index.html',
-                           ip=ip,
-                           summary="Provides consulting and management of computer technology."
-                           )
+    return render_template('index.html', summary="Provides consulting and management of computer technology.")
 
 
 @app.route('/<path:attempt>')
