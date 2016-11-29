@@ -19,7 +19,7 @@ Compress(app)
 
 @app.route('/', methods=['GET'])
 def landing():
-    return render_template('index.html', summary="Provides consulting and management of computer technology.")
+    return render_template('index.html')
 
 
 @app.route('/<path:attempt>')
