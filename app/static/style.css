@@ -27,6 +27,7 @@ a {
     font-family: "Source Code Pro Medium";
     vertical-align: bottom;
     background-color: #bbf060;
+    border-radius: 5px;
 }
 
 .vertical-center {
