@@ -14,11 +14,11 @@
 <meta property="og:image" content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
 <meta property="fb:admins" content="rustydb"/>
 <meta property="og:site_name" content="4&#955;"/>
-<meta property="og:description" content="{{ summary }}"/>
+<meta property="og:description" content="~rusty"/>
 <!--TWITTER-->
-<meta name="twitter:card" content="{{ summary }}"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content="@rbunch"/>
-<meta name="twitter:title" content="4&#955;"/>
+<meta name="twitter:title" content="4Lambda"/>
 <meta name="twitter:description" content="4&#955; I/O"/>
 <meta name="twitter:image" content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
 {% endblock %}
@@ -71,11 +71,7 @@
                 <h1 class="text-center" id="fourlambda">
                     <strong>4&#955;</strong>
                 </h1>
-                <p id="terminal">
-                    $> echo "Welcome $REMOTE_ADDRESS"<br>
-                    Welcome {{ remote_address }}<br>
-                    $><span class="blinkme">_</span>
-                </p>
+                <p id="terminal">$><span class="blinkme">_</span></p>
             </div>
         </div>
     </div>
