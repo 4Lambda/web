@@ -35,7 +35,7 @@ COPY uwsgi.ini /etc/uwsgi/
 COPY supervisord.conf /etc/supervisor/conf.d/
 
 # HTTP.
-EXPOSE 80 443
+EXPOSE 80
 
 # Start the secure gateway.
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
