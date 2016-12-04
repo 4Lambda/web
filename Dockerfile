@@ -42,4 +42,4 @@ COPY supervisord.conf /etc/supervisor/conf.d/
 VOLUME /etc/pki/4l
 
 # Start the secure gateway.
-CMD ["/usr/bin/supervisord", "-c", "supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
