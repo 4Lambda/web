@@ -1,4 +1,4 @@
-#`4Lambda` `Web`
+#`Web`
 
 Seen at http://www.4lambda.io, the landing page for **4λ**
 
