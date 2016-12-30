@@ -20,11 +20,6 @@ RUN yum -y makecache all \
     && yum -y --nogpgcheck install nginx \
     && yum clean all
 
-# Localize the web files and install Python requirements.
-ADD . /var/4l/www
-WORKDIR /var/4l/www
-RUN pip install -r app/requirements.txt
-
 # Forward request and error logs to Docker log collector.
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
@@ -36,6 +31,11 @@ COPY supervisord.conf /etc/supervisor/conf.d/
 
 # HTTP.
 EXPOSE 80
+
+# Localize the web files and install Python requirements.
+ADD app /var/4l/www
+WORKDIR /var/4l/www
+RUN pip install -r requirements.txt
 
 # Start the secure gateway.
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
