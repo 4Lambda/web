@@ -39,5 +39,4 @@ deploy_website:
     - gcloud config set project "$GCLOUD_PROJECT"
     - gcloud container clusters get-credentials "$GITLAB_CI_USER"
   script:
-    - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80 || \
-      kubectl set image "deployment/$GITLAB_CI_USER" "$GITLAB_CI_USER=$GCLOUD_REGISTRY_IMAGE"
+    - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80 || kubectl set image "deployment/$GITLAB_CI_USER" "$GITLAB_CI_USER=$GCLOUD_REGISTRY_IMAGE"
