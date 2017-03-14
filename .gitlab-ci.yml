@@ -1,11 +1,45 @@
-image: docker:latest
-services:
-  - docker:dind
 stages:
-  - build
-build:
-  stage: build
+  - test
+  - package
+  - deploy
+lint:
+  image: python:2
+  stage: test
+  before_script:
+    - pip install tox
+    - cd app
   script:
-    - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" $CI_REGISTRY
+    - tox -e flake8
+make_image:
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay
+  stage: package
+  before_script:
+    - echo "$GCLOUD_KEY" > key.json
+    - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - docker login -u "_json_key" -p "$(cat key.json)" "$GCLOUD_REGISTRY"
+  script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$CI_REGISTRY_IMAGE:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
+  after_script:
+    - docker push "$CI_REGISTRY_IMAGE"
+    - docker push "$GCLOUD_REGISTRY_IMAGE"
+deploy_website:
+  image: google/cloud-sdk
+  stage: deploy
+  before_script:
+    - echo "$GCLOUD_KEY" > key.json
+    - gcloud auth activate-service-account --key-file key.json
+    - gcloud config set compute/zone "$GCE_ZONE"
+    - gcloud config set project sylvan-triumph-161508
+    - gcloud container clusters get-credentials "$GITLAB_CI_USER"
+    - gcloud auth application-default login
+  script:
+    - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80
+    - kubectl expose deployment "$GCLOUD_CONTAINER" --type="LoadBalancer" # FIXME: NEED ENDPOINT
