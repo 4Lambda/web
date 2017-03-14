@@ -38,7 +38,6 @@ deploy_website:
     - gcloud config set compute/zone "$GCE_ZONE"
     - gcloud config set project "GCLOUD_PROJECT"
     - gcloud container clusters get-credentials "$GITLAB_CI_USER"
-    - gcloud auth application-default login
   script:
     - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80
-    - kubectl expose deployment "$GCLOUD_CONTAINER" --type="LoadBalancer" # FIXME: NEED ENDPOINT
+    - kubectl expose deployment "$GCLOUD_CONTAINER" --type="LoadBalancer"
