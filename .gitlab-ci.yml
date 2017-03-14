@@ -40,4 +40,3 @@ deploy_website:
     - gcloud container clusters get-credentials "$GITLAB_CI_USER"
   script:
     - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80
-    - kubectl expose deployment "$GCLOUD_CONTAINER" --type="LoadBalancer"
