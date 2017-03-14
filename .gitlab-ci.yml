@@ -36,7 +36,7 @@ deploy_website:
     - echo "$GCLOUD_KEY" > key.json
     - gcloud auth activate-service-account --key-file key.json
     - gcloud config set compute/zone "$GCE_ZONE"
-    - gcloud config set project "GCLOUD_PROJECT"
+    - gcloud config set project "$GCLOUD_PROJECT"
     - gcloud container clusters get-credentials "$GITLAB_CI_USER"
   script:
     - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80
