@@ -10,6 +10,17 @@ lint:
     - cd app
   script:
     - tox -e flake8
+deploy_test:
+  image: google/cloud-sdk
+  stage: test
+  before_script:
+    - echo "$GCLOUD_KEY" > key.json
+    - gcloud auth activate-service-account --key-file key.json
+    - gcloud config set compute/zone "$GCE_ZONE"
+    - gcloud config set project "$GCLOUD_PROJECT"
+    - gcloud container clusters get-credentials "$GITLAB_CI_USER"
+  script:
+    - kubectl create -f --dry-run ../deployment.yaml
 make_image:
   image: docker:latest
   services:
@@ -39,4 +50,4 @@ deploy_website:
     - gcloud config set project "$GCLOUD_PROJECT"
     - gcloud container clusters get-credentials "$GITLAB_CI_USER"
   script:
-    - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80 || kubectl set image "deployment/$GITLAB_CI_USER" "$GITLAB_CI_USER=$GCLOUD_REGISTRY_IMAGE"
+    - kubectl create -f ../deployment.yaml

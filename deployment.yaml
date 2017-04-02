@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        component: web
+        app: uwsgi
+    spec:
+      containers:
+        - name: web
+          image: gcr.io/1765753713/web
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: pki
+              readOnly: true
+              mountPath: /etc/pki/4l
+          imagePullPolicy: Always
+      restartPolicy: Always
+      volumes:
+        - name: pki
+          secret:
+            secretName: ssl
+            defaultMode: 0700
+            items:
+              - key: pem
+                path: www_4lambda_io.pem
+                mode: 0644
+              - key: key
+                path: private/server.key
+                mode: 0400
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
