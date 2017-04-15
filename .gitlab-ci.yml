@@ -10,7 +10,7 @@ lint:
     - cd app
   script:
     - tox -e flake8
-deploy_test:
+check_kube_configs:
   image: google/cloud-sdk
   stage: test
   before_script:
@@ -18,9 +18,10 @@ deploy_test:
     - gcloud auth activate-service-account --key-file key.json
     - gcloud config set compute/zone "$GCE_ZONE"
     - gcloud config set project "$GCLOUD_PROJECT"
-    - gcloud container clusters get-credentials "$GITLAB_CI_USER"
+    - gcloud container clusters get-credentials "$GCLOUD_CLUSTER"
   script:
-    - kubectl create -f --dry-run ../deployment.yaml
+    - kubectl create -f deployment.yaml --dry-run
+    - kubectl create -f service.yaml --dry-run
 make_image:
   image: docker:latest
   services:
@@ -48,6 +49,7 @@ deploy_website:
     - gcloud auth activate-service-account --key-file key.json
     - gcloud config set compute/zone "$GCE_ZONE"
     - gcloud config set project "$GCLOUD_PROJECT"
-    - gcloud container clusters get-credentials "$GITLAB_CI_USER"
+    - gcloud container clusters get-credentials "$GCLOUD_CLUSTER"
   script:
-    - kubectl create -f ../deployment.yaml
+    - kubectl replace -f deployment.yaml
+    - kubectl replace -f service.yaml
