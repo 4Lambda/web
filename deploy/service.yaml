@@ -13,7 +13,6 @@ spec:
     - name: https
       protocol: TCP
       port: 443
-      targetPort: 80
       nodePort: 30443
   type: LoadBalancer
   loadBalancerIP: 146.148.45.233
