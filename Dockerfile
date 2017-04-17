@@ -30,7 +30,7 @@ COPY uwsgi.ini /etc/uwsgi/
 COPY supervisord.conf /etc/supervisor/conf.d/
 
 # HTTP.
-EXPOSE 80
+EXPOSE 80 443
 
 # Localize the web files and install Python requirements.
 COPY app /var/4l/www/
