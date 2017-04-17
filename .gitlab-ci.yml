@@ -20,8 +20,8 @@ check_kube_configs:
     - gcloud config set project "$GCLOUD_PROJECT"
     - gcloud container clusters get-credentials "$GCLOUD_CLUSTER"
   script:
-    - kubectl create -f deployment.yaml --dry-run
-    - kubectl create -f service.yaml --dry-run
+    - kubectl create -f deploy/deployment.yaml --dry-run
+    - kubectl create -f deploy/service.yaml --dry-run
 make_image:
   image: docker:latest
   services:
@@ -51,5 +51,5 @@ deploy_website:
     - gcloud config set project "$GCLOUD_PROJECT"
     - gcloud container clusters get-credentials "$GCLOUD_CLUSTER"
   script:
-    - kubectl replace -f deployment.yaml
-    - kubectl replace -f service.yaml
+    - kubectl set image deployment/"$CI_PROJECT_NAME"-deployment "$CI_PROJECT_NAME=$GCLOUD_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
+
