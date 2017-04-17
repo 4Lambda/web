@@ -41,9 +41,11 @@ make_image:
     - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
     - docker push "$CI_REGISTRY_IMAGE"
     - docker push "$GCLOUD_REGISTRY_IMAGE"
-deploy_website:
+rollout_image:
   image: google/cloud-sdk
   stage: deploy
+  only:
+    - master@4lambda/web
   before_script:
     - echo "$GCLOUD_KEY" > key.json
     - gcloud auth activate-service-account --key-file key.json
