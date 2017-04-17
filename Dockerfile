@@ -29,7 +29,7 @@ COPY            nginx.conf /etc/nginx/
 COPY            uwsgi.ini /etc/uwsgi/
 COPY            supervisord.conf /etc/supervisor/conf.d/
 
-# HTTP.
+# HTTP/S.
 EXPOSE          80 443
 
 # Localize the web files and install Python requirements.
