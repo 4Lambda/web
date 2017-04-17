@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: web-deployment
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,6 +15,8 @@ spec:
           image: gcr.io/1765753713/web
           ports:
             - containerPort: 80
+              protocol: TCP
+            - containerPort: 443
               protocol: TCP
           volumeMounts:
             - name: pki
