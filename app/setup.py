@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='4l-web',
-    version='1.2.9',
+    version='1.3.1',
     url='http://www.4lambda.io',
     license='Apache License 2.0',
     author='4Lambda Developers',
