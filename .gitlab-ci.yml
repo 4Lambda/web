@@ -19,26 +19,29 @@ make_image:
   stage: package
   before_script:
     - echo "$GCLOUD_KEY" > key.json
-    - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
     - docker login -u "_json_key" -p "$(cat key.json)" "$GCLOUD_REGISTRY"
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" .
-    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$CI_REGISTRY_IMAGE:latest"
-    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
-    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:latest"
-    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
     - docker push "$CI_REGISTRY_IMAGE"
     - docker push "$GCLOUD_REGISTRY_IMAGE"
-rollout_image:
-  image: google/cloud-sdk
+trigger_deployment:
   stage: deploy
   only:
     - master@4lambda/web
-  before_script:
-    - echo "$GCLOUD_KEY" > key.json
-    - gcloud auth activate-service-account --key-file key.json
-    - gcloud config set compute/zone "$GCE_ZONE"
-    - gcloud config set project "$GCLOUD_PROJECT"
-    - gcloud container clusters get-credentials "$GITLAB_CI_USER"
   script:
-    - kubectl run "$GITLAB_CI_USER" --image "$GCLOUD_REGISTRY_IMAGE" --port 80 || kubectl set image "deployment/$GITLAB_CI_USER" "$GITLAB_CI_USER=$GCLOUD_REGISTRY_IMAGE"
+    - curl -X POST
+     -F token="$TOKEN"
+     -F "ref=master"
+     -F "variables[TARGET_PROJECT_NAME]=$CI_PROJECT_NAME"
+     -F "variables[TARGET_COMMIT_REF_NAME]=$CI_COMMIT_REF_NAME"
+     -F "variables[GCLOUD_REGISTRY_IMAGE]=$GCLOUD_REGISTRY_IMAGE"
+     -F "variables[GCLOUD_CLUSTER]=$GCLOUD_CLUSTER"
+     -F "variables[GCLOUD_PROJECT]=$GCLOUD_PROJECT"
+     -F "variables[GCE_ZONE]=$GCE_ZONE"
+     https://gitlab.com/api/v4/projects/2257388/trigger/pipeline
+
