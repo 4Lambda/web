@@ -19,7 +19,8 @@ Compress(app)
 
 @app.route('/', methods=['GET'])
 def landing():
-    return render_template('index.html')
+    menu_items = ['Services', 'Quote', 'Wallpapers']
+    return render_template('index.html', menu_items=menu_items)
 
 
 @app.route('/<path:attempt>')

@@ -65,6 +65,41 @@
         window.document.write("<div style='background:black;opacity:0.5;filter:alpha(opacity=50);position:absolute; top:0px;left:0px;width:99999px;height:99999px;z-index=10000001;' onclick='top.location.href=window.location.href'><div>")
     }
 </script>
+
+<nav id="menu" class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="center-block">
+                {% for menu_item in menu_items %}
+                    {# TODO: Differ colors for respective action items (not all btn-info) #}
+                    <button class="btn btn-info navbar-btn">
+                        {{menu_item}}
+                    </button>
+                {%  endfor %}
+            </div>
+        </div>
+    </div>
+{# TODO: Throw into 'Quote' #}
+{#        <address class="text-left">#}
+{#            <ul class="list-unstyled">#}
+{#                <li>#}
+{#                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> :#}
+{#                    <strong>Russell Bunch</strong><br>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> :#}
+{#                    <abbr title="Phone">(612) 548-1885</abbr>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> :#}
+                    {# FIXME: Address #}
+{#                    <a href="mailto:wm@4lambda.io">contact@4lambda.io</a>#}
+{#                </li>#}
+{#            </ul>#}
+{#        </address>#}
+</nav>
+
+{# FIXME: Remove scrollable #}
 <div class="jumbotron vertical-center">
     <div class="container-fluid">
         <div class="row">
@@ -74,34 +109,6 @@
                 </h1>
                 <p id="terminal">$><span class="blinkme">_</span></p>
             </div>
-        </div>
-    </div>
-</div>
-<div class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                <div class="pull-left" id="contact">
-                    <address class="text-left">
-                        <ul class="list-unstyled">
-                            <li>
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> :
-                                <strong>Russell Bunch</strong><br>
-                            </li>
-                            <li>
-                                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> :
-                                <abbr title="Phone">(612) 548-1885</abbr>
-                            </li>
-                            <li>
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> :
-                                <a href="mailto:wm@4lambda.io">contact@4lambda.io</a>
-                            </li>
-                        </ul>
-                    </address>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm"></div>
-            <div class="col-md-4 hidden-sm"></div>
         </div>
     </div>
 </div>

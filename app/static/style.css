@@ -1,3 +1,7 @@
+#menu {
+    display: flex;
+}
+
 #fourlambda {
     font-family: 'Jura', 'sans-serif';
     color: #fff9ee;
