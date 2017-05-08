@@ -24,9 +24,8 @@
 {% endblock %}
 {% block styles %}
 {{super()}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}">
+      href="{{ url_for('static', filename='index.css') }}">
 <link rel="stylesheet" type="text/css"
       href="https://fonts.googleapis.com/css?family=Jura:500,400">
 <link rel="stylesheet" type="text/css"
@@ -64,7 +63,7 @@
 <link rel="manifest" href="{{ url_for('static', filename='favicons/manifest.json') }}">
 {% endblock %}
 {% block content %}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <nav id="menu" class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="row">
@@ -90,7 +89,6 @@
         </div>
     </div>
 </nav>
-
 <div class="jumbotron vertical-center">
     <div class="container-fluid">
         <div class="row">
