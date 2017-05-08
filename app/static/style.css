@@ -2,14 +2,39 @@
     display: flex;
 }
 
+.menu-item {
+    font-family: 'Verdana', sans-serif;
+    font-size: 24px;
+}
+
+.services {
+    color: #090909;
+    background-color: #42c400;
+    border-color: #318600;
+}
+.quote {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.wallpapers {
+    color: #fff;
+    background-color: #7a7a7a;
+    border-color: #5c5c5c;
+}
+
 #fourlambda {
     font-family: 'Jura', 'sans-serif';
     color: #fff9ee;
-    font-size: 72px
+    font-size: 72px;
 }
 
 .jumbotron {
     background-color: #49525a;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 html, body {
@@ -20,10 +45,6 @@ html, body {
 #contact {
     width: 300px;
     color: rgb(192, 219, 231)
-}
-
-a {
-    color: yellow;
 }
 
 #terminal {
