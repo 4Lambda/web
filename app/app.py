@@ -9,10 +9,6 @@ from datetime import datetime
 from datetime import timedelta
 
 app = Flask(__name__)
-app.config['COMPRESS_MIMETYPES'] = ['text/html', 'text/css', 'text/xml', 'application/json', 'application/javascript']
-app.config['COMPRESS_LEVEL'] = 6
-app.config['COMPRESS_MIN_SIZE '] = 500
-app.config['CACHE_TYPE'] = 'simple'
 Bootstrap(app)
 Compress(app)
 
