@@ -19,7 +19,11 @@ Compress(app)
 
 @app.route('/', methods=['GET'])
 def landing():
-    menu_items = ['Services', 'Quote', 'Wallpapers']
+    menu_items = {
+        'Services': 'foo',
+        'Quote': render_template('quote.html'),
+        'Wallpapers': 'bar',
+    }
     return render_template('index.html', menu_items=menu_items)
 
 

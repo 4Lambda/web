@@ -7,45 +7,60 @@
 <meta name="msapplication-TileImage" content="{{ url_for('static', filename='favicons/ms-icon-144x144.png') }}">
 <meta name="theme-color" content="#ffffff">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<!--OPEN GRAPH-->
 <meta property="og:title" content="4&#955; - Learn, Link, Load, Leap"/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="https://www.4lambda.io"/>
-<meta property="og:image" content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
+<meta property="og:image"
+      content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
 <meta property="fb:admins" content="rustydb"/>
 <meta property="og:site_name" content="4&#955;"/>
 <meta property="og:description" content="Technology Consulting and Computer Management."/>
-<!--TWITTER-->
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content="@rbunch"/>
 <meta name="twitter:title" content="4Lambda"/>
 <meta name="twitter:description" content="4&#955; I/O"/>
-<meta name="twitter:image" content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
+<meta name="twitter:image"
+      content="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}"/>
 {% endblock %}
 {% block styles %}
 {{super()}}
-<!--STYLE-->
-<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
-<!--FONTS-->
-<link href="https://fonts.googleapis.com/css?family=Jura:500,400" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-<!--FAVICONS-->
-<link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='favicons/apple-icon-57x57.png') }}">
-<link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='favicons/apple-icon-60x60.png') }}">
-<link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='favicons/apple-icon-72x72.png') }}">
-<link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='favicons/apple-icon-76x76.png') }}">
-<link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='favicons/apple-icon-114x114.png') }}">
-<link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='favicons/apple-icon-120x120.png') }}">
-<link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='favicons/apple-icon-144x144.png') }}">
-<link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='favicons/apple-icon-152x152.png') }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Jura:500,400">
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=VT323">
+<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Nunito">
+<link rel="apple-touch-icon" sizes="57x57"
+      href="{{ url_for('static', filename='favicons/apple-icon-57x57.png') }}">
+<link rel="apple-touch-icon" sizes="60x60"
+      href="{{ url_for('static', filename='favicons/apple-icon-60x60.png') }}">
+<link rel="apple-touch-icon" sizes="72x72"
+      href="{{ url_for('static', filename='favicons/apple-icon-72x72.png') }}">
+<link rel="apple-touch-icon" sizes="76x76"
+      href="{{ url_for('static', filename='favicons/apple-icon-76x76.png') }}">
+<link rel="apple-touch-icon" sizes="114x114"
+      href="{{ url_for('static', filename='favicons/apple-icon-114x114.png') }}">
+<link rel="apple-touch-icon" sizes="120x120"
+      href="{{ url_for('static', filename='favicons/apple-icon-120x120.png') }}">
+<link rel="apple-touch-icon" sizes="144x144"
+      href="{{ url_for('static', filename='favicons/apple-icon-144x144.png') }}">
+<link rel="apple-touch-icon" sizes="152x152"
+      href="{{ url_for('static', filename='favicons/apple-icon-152x152.png') }}">
+<link rel="apple-touch-icon" sizes="180x180"
+      href="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}">
 <link rel="icon" type="image/png" sizes="192x192"
       href="{{ url_for('static', filename='favicons/android-icon-192x192.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicons/favicon-32x32.png') }}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicons/favicon-96x96.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
+<link rel="icon" type="image/png" sizes="32x32"
+      href="{{ url_for('static', filename='favicons/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="96x96"
+      href="{{ url_for('static', filename='favicons/favicon-96x96.png') }}">
+<link rel="icon" type="image/png" sizes="16x16"
+      href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
 <link rel="manifest" href="{{ url_for('static', filename='favicons/manifest.json') }}">
 {% endblock %}
 {% block content %}
@@ -54,31 +69,26 @@
     <div class="container-fluid">
         <div class="row">
             <div class="center-block">
-                {% for menu_item in menu_items %}
+                {% for menu_item, menu_item_contents in menu_items.items() %}
+                    <script>
+                        $(document).ready(function(){
+                            $('[data-toggle="popover-{{ menu_item }}"]').popover();
+                        });
+                    </script>
                     <button class="btn navbar-btn menu-item {{ menu_item.lower() }}">
-                        {{menu_item}}
+                        <a href="#"
+                           data-toggle="popover-{{ menu_item }}"
+                           title="{{ menu_item }}"
+                           data-content="{{ menu_item_contents }}"
+                           data-html="true"
+                           data-placement="top">
+                            {{ menu_item }}
+                        </a>
                     </button>
-                {%  endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
-{# TODO: Throw into 'Quote' #}
-{#        <address class="text-left">#}
-{#            <ul class="list-unstyled">#}
-{#                <li>#}
-{#                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> :#}
-{#                    <strong>Russell Bunch</strong><br>#}
-{#                </li>#}
-{#                <li>#}
-{#                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span> :#}
-{#                    <abbr title="Phone">(612) 548-1885</abbr>#}
-{#                </li>#}
-{#                <li>#}
-{#                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> :#}
-{#                    <a href="mailto:contact@4lambda.io">contact@4lambda.io</a>#}
-{#                </li>#}
-{#            </ul>#}
-{#        </address>#}
 </nav>
 
 <div class="jumbotron vertical-center">
