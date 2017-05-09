@@ -30,7 +30,7 @@ html, body {
 }
 
 .jumbotron {
-  background-color: gold;
+  background-color: #272a2e;
   padding-bottom: 0;
   padding-top: 0;
   margin-bottom: 0;
@@ -38,8 +38,14 @@ html, body {
 }
 
 .send {
-  background-color: #2980B9;
-  border-color: #3498DB;
-  color: #F39C12;
+  background-color: #49525a;
+  border-color: black;
+  color: gold;
   font-size: 32px;
+}
+
+.send:hover, .send:focus, .send:active, .send:active:focus, .open>.dropdown-toggle.btn-default {
+  background-color: gold;
+  border-color: black;
+  color: #49525a;
 }
