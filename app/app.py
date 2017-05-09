@@ -7,11 +7,13 @@ from flask import redirect
 from flask import render_template
 from flask import send_file
 from flask_bootstrap import Bootstrap
+from flask_scss import Scss
 from flask_compress import Compress
 
 app = Flask(__name__)
-Bootstrap(app)
 Compress(app)
+Bootstrap(app)
+Scss(app)
 
 
 @app.route('/', methods=['GET'])
