@@ -1,14 +1,20 @@
+{% set telephone = '612-548-1885' %}
+{% set email = 'rusty@4lambda.io' %}
 {% block content %}
-    <address class="text-center">
+    <address class="text-right text-muted">
         <ul class="list-unstyled">
             <li>
-                <abbr title="Phone">
-                    (612)-548-1885
-                </abbr>
+                <h3>Russell Bunch</h3>
+{#                TODO: Use gravatar. <img src="{{ url_for('static', }}"#}
             </li>
             <li>
-                <a href="mailto:contact@4lambda.io">
-                    contact@4lambda.io
+                <a href="tel:{{ telephone }}">
+                    ({{ telephone[:3] }}){{ telephone[3:] }}
+                </a>
+            </li>
+            <li>
+                <a href="mailto:{{ email }}">
+                    {{ email }}
                 </a>
             </li>
         </ul>
