@@ -1,58 +1,20 @@
 #fourlambda {
     font-family: 'Jura', 'sans-serif';
-    color: #fff9ee;
-    font-size: 72px;
+    color: #f0f055;
+    font-size: 128px;
 }
 
 .jumbotron {
-    background-color: #49525a;
+    background-color: #000000;
     padding-bottom: 0;
     padding-top: 0;
     margin-bottom: 0;
     margin-top: 0;
 }
 
-
-#terminal {
-    color: #211f28;
-    font-family: 'VT323', monospace;
-    font-size: 20px;
-    vertical-align: bottom;
-    background-color: #bbf060;
-    border-radius: 5px;
-}
-
-.blinkme {
-    -webkit-animation-name: blinker;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-
-    -moz-animation-name: blinker;
-    -moz-animation-duration: 1s;
-    -moz-animation-timing-function: linear;
-    -moz-animation-iteration-count: infinite;
-
-    animation-name: blinker;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@-moz-keyframes blinker {
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
-}
-
-@-webkit-keyframes blinker {
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
-}
-
-@keyframes blinker {
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
+.send {
+    background-color: #2980B9;
+    border-color: #3498DB;
+    color: #F39C12;
+    font-size: 32px;
 }
