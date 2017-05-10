@@ -50,29 +50,25 @@
                     </header>
                 </div>
                 <div class="row">
-                    <div class="center-block">
-                        <div class="text-center">
-                        {% for menu_item in menu_items %}
-                            {% set template = menu_item + '.html' %}
-                            <a class="btn btn-default btn-block {{ menu_item.lower() }}
-                                  glyphicon glyphicon-{{ menu_item }}
-                                  text-center"
-                               role="button"
-                               data-toggle="collapse"
-                               data-target="#collapse{{ menu_item }}"
-                               aria-expanded="false"
-                               aria-controls="collapse{{ menu_item }}">
-                            </a>
-                        </div>
+                    <div class="text-center">
+                    {% for menu_item in menu_items %}
+                        {% set template = menu_item + '.html' %}
+                        <a class="btn btn-default btn-block {{ menu_item.lower() }}
+                              glyphicon glyphicon-{{ menu_item }}
+                              text-center"
+                           role="button"
+                           data-toggle="collapse"
+                           data-target="#collapse{{ menu_item }}"
+                           aria-expanded="false"
+                           aria-controls="collapse{{ menu_item }}">
+                        </a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="center-block">
-                        <div class="collapse" id="collapse{{ menu_item }}">
-                            <div class="well well-lg">
-                            {% include template %}
-                        {% endfor %}
-                            </div>
+                <div class="collapse" id="collapse{{ menu_item }}">
+                    <div class="well well-lg">
+                        <div class="row">
+                        {% include template %}
+                    {% endfor %}
                         </div>
                     </div>
                 </div>
