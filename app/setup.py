@@ -11,7 +11,7 @@ setup(
     install_requires=[
         'flask>0.10',
         'flask_bootstrap>3.3.0.0',
-        'flask-scss=>0.5',
+        'flask-scss>=0.5',
         'uwsgi>2.0.0',
         'supervisor>3.3.0',
         'flask_cache>0.13.0',
