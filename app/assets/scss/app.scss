@@ -15,6 +15,7 @@ h2 {
   text-align: center;
   filter: drop-shadow(.02em .02em orangered);
   pointer-events: none;
+  mix-blend-mode: difference;
 }
 
 html, body {

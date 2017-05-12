@@ -1,17 +1,17 @@
 {% extends "bootstrap/base.html" %}
-{% block html_attribs %} lang="en" {% endblock %}
+{% block html_attribs %} lang=en {% endblock %}
 {% block title %}4&#955;{% endblock %}
 {% set title = "4Lambda" %}
 {% set description = "Technology rocks.." %}
 {% set email = "d@4lambda.io" %}
 {% set favicon = url_for('static', filename='favicon.ico') %}
 {% block metas %}
-    <meta name="description" content="4&#955;"/>
-    <meta name="viewport"
+    <meta name=description content="4&#955;"/>
+    <meta name=viewport
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <meta property="og:title" content="4&#955;"/>
-    <meta property="og:type" content="article"/>
+    <meta property="og:type" content=article/>
     <meta property="og:url" content="https://www.4lambda.io"/>
     <meta property="og:image"
           content="{{ favicon }}"/>
@@ -19,54 +19,59 @@
     <meta property="og:site_name" content="{{ title }}"/>
     <meta property="og:description" content="{{ description }}"/>
 
-    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:card" content=summary/>
     <meta name="twitter:site" content="@rbunch"/>
     <meta name="twitter:title" content="{{ title }}"/>
     <meta name="twitter:description" content="{{ description }}"/>
     <meta name="twitter:image"
           content="{{ favicon }}"/>
 {% endblock %}
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='xy_color.js') }}"></script>
+    {{ super() }}
+{% endblock %}
 {% block styles %}
     <link rel="shortcut icon" href="{{ favicon }}" type="image/x-icon">
-    <link rel="icon" href="{{ favicon }}" type="image/x-icon">
+    <link rel=icon href="{{ favicon }}" type="image/x-icon">
     {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-    <link rel="stylesheet" type="text/css"
+    <link rel=stylesheet href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel=stylesheet type="text/css"
           href="https://fonts.googleapis.com/css?family=Jura:500,400">
-    <link rel="stylesheet" type="text/css"
+    <link rel=stylesheet type="text/css"
           href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" type="text/css"
+    <link rel=stylesheet type="text/css"
           href="https://fonts.googleapis.com/css?family=VT323">
-    <link rel="stylesheet" type="text/css"
+    <link rel=stylesheet type="text/css"
           href="https://fonts.googleapis.com/css?family=Nunito">
 {% endblock %}
 {% block content %}
     <div class="jumbotron vertical-center">
         <div class="container-fluid">
-            <div class="row">
+            <div class=row>
                 <div class="center-block">
                     <header>
                         <h2 class="text-center"><strong>4&#955;</strong></h2>
                     </header>
                 </div>
-                <div class="row">
+                <div class=row>
                     <div class="text-center">
                     {% for menu_item in menu_items %}
                         {% set template = menu_item + '.html' %}
                         <a class="btn btn-default btn-block {{ menu_item.lower() }}
                               glyphicon glyphicon-{{ menu_item }}
                               text-center"
-                           role="button"
-                           data-toggle="collapse"
+                           role=button
+                           data-toggle=collapse
                            data-target="#collapse{{ menu_item }}"
-                           aria-expanded="false"
+                           aria-expanded=false
                            aria-controls="collapse{{ menu_item }}">
                         </a>
                     </div>
                 </div>
-                <div class="collapse" id="collapse{{ menu_item }}">
+                <div class=collapse id="collapse{{ menu_item }}">
                     <div class="well well-lg">
-                        <div class="row">
+                        <div class=row>
                         {% include template %}
                     {% endfor %}
                         </div>
