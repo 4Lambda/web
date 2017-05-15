@@ -3,15 +3,9 @@
   padding: 0
 }
 
-header {
-  //overflow: hidden;
-  //height: 100vh;
-  //background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_04_cat_bg_03.jpg) 50%/ cover
-}
-
 h2 {
   color: orange;
-  font: 900 35vmin/35vh 'Jura', 'sans-serif';
+  font: 900 35vmin/35vh monospace;
   text-align: center;
   filter: drop-shadow(.02em .02em orangered);
   pointer-events: none;
