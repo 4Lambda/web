@@ -1,3 +1,7 @@
-.git*
 LICENSE
-*.md
+
+*/*tox*
+.git*
+*.idea*
+
+.dockerignore
