@@ -2,10 +2,10 @@ from datetime import datetime
 from datetime import timedelta
 
 from flask import Flask
+from flask import send_from_directory
 from flask import make_response
 from flask import redirect
 from flask import render_template
-from flask import send_file
 from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from flask_compress import Compress
@@ -30,7 +30,7 @@ def no(attempt):
 
 @app.route('/robots.txt', methods=['GET'])
 def robots():
-    return send_file('robots.txt')
+    return send_from_directory('static', 'robots.txt')
 
 
 @app.route('/sitemap.xml', methods=['GET'])
