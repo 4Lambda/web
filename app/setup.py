@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='4l-web',
-    version='1.3.1',
+    name='web',
+    version='2.0.0',
     url='http://www.4lambda.io',
     license='Apache License 2.0',
     author='4Lambda Developers',
