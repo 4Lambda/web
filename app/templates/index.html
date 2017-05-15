@@ -28,22 +28,15 @@
 {% endblock %}
 {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type=text/javascript src="{{ url_for('static', filename='main.js') }}"></script>
     {{ super() }}
+    <script type=text/javascript src="{{ url_for('static', filename='main.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='xy_color.js') }}"></script>
 {% endblock %}
 {% block styles %}
+    {{ super() }}
     <link rel="shortcut icon" href="{{ favicon }}" type="image/x-icon">
     <link rel=icon href="{{ favicon }}" type="image/x-icon">
-    {{ super() }}
     <link rel=stylesheet href="{{ url_for('static', filename='css/app.css') }}">
-    <link rel=stylesheet type="text/css"
-          href="https://fonts.googleapis.com/css?family=Jura:500,400">
-    <link rel=stylesheet type="text/css"
-          href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel=stylesheet type="text/css"
-          href="https://fonts.googleapis.com/css?family=VT323">
-    <link rel=stylesheet type="text/css"
-          href="https://fonts.googleapis.com/css?family=Nunito">
 {% endblock %}
 {% block content %}
     <div class="jumbotron vertical-center">
