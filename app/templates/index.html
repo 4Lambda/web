@@ -27,7 +27,6 @@
           content="{{ favicon }}"/>
 {% endblock %}
 {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {{ super() }}
     <script type=text/javascript src="{{ url_for('static', filename='main.js') }}"></script>
     <script type=text/javascript src="{{ url_for('static', filename='xy_color.js') }}"></script>
