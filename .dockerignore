@@ -1,7 +1,4 @@
-LICENSE
-
-*/*tox*
-.git*
-*.idea*
-
+**/*tox*
+**/*git*
+**/.idea*
 .dockerignore
