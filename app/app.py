@@ -9,15 +9,13 @@ from flask import render_template
 from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from flask_compress import Compress
-from flask_bootstrap import WebCDN
+from flask_bootstrap import StaticCDN
 app = Flask(__name__)
 Compress(app)
 Bootstrap(app)
 Scss(app)
 
-app.extensions['bootstrap']['cdns']['jquery'] = WebCDN(
-    '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/'
-)
+app.extensions['bootstrap']['cdns']['jquery'] = StaticCDN()
 
 @app.route('/', methods=['GET'])
 def landing():
