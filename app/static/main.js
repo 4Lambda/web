@@ -17,10 +17,12 @@
 })(typeof window !== "undefined" ? window : function (window) {
     var scripts = ["facebook", "colors"];
     scripts.forEach(function (script) {
-        $.getScript(script + ".js").done(function (script, textStatus) {
-            console.log(textStatus);
-        }).fail(function (jqxhr, settings, exception) {
-            $("div.log").text("Triggered ajaxError handler.");
+        $.getScript(script + ".js")
+            .done(function (script, textStatus) {
+                console.log(textStatus);
+                })
+            .fail(function (jqxhr, settings, exception) {
+                $("div.log").text("Triggered ajaxError handler.");
         });
     });
 });

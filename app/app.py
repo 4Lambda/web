@@ -17,6 +17,7 @@ Scss(app)
 
 app.extensions['bootstrap']['cdns']['jquery'] = StaticCDN()
 
+
 @app.route('/', methods=['GET'])
 def landing():
     menu_items = ['send']
