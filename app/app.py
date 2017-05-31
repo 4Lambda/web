@@ -43,7 +43,7 @@ def sitemap():
         if "GET" in rule.methods and len(rule.arguments) == 0:
             pages.append([
                 rule.rule,
-                ten_days_ago
+                ten_days_ago,
             ])
     sitemap_xml = render_template('sitemap_template.xml', pages=pages)
     response = make_response(sitemap_xml)
