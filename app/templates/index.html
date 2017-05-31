@@ -2,29 +2,15 @@
 {% block html_attribs %} lang=en {% endblock %}
 {% block title %}4&#955;{% endblock %}
 {% set title = "4Lambda" %}
-{% set description = "Technology rocks.." %}
+{% set description = "Technology Partner." %}
 {% set email = "d@4lambda.io" %}
 {% set favicon = url_for('static', filename='favicon.ico') %}
 {% block metas %}
     <meta name=description content="4&#955;"/>
     <meta name=viewport
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <meta property="og:title" content="4&#955;"/>
-    <meta property="og:type" content=article/>
-    <meta property="og:url" content="https://www.4lambda.io"/>
-    <meta property="og:image"
-          content="{{ favicon }}"/>
-    <meta property="fb:admins" content="{{ email }}"/>
-    <meta property="og:site_name" content="{{ title }}"/>
-    <meta property="og:description" content="{{ description }}"/>
-
-    <meta name="twitter:card" content=summary/>
-    <meta name="twitter:site" content="@rbunch"/>
-    <meta name="twitter:title" content="{{ title }}"/>
-    <meta name="twitter:description" content="{{ description }}"/>
-    <meta name="twitter:image"
-          content="{{ favicon }}"/>
+    {% include 'facebook.html' %}
+    {% include 'twitter.html' %}
 {% endblock %}
 {% block scripts %}
     {{ super() }}
