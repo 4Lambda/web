@@ -10,15 +10,15 @@ RUN             rpm --import http://mirror.centos.org/centos/7/os/x86_64/RPM-GPG
                 rpm --import http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
 
 # Setup YUM and install needed system packages.
-RUN             yum -y makecache all \
-                && yum -y install epel-release \
-                && yum -y install \
+RUN             yum -y -q makecache all \
+                && yum -y -q install epel-release \
+                && yum -y -q install \
                     gcc \
                     python-pip \
                     python-devel \
                     pcre-devel \
-                && yum -y --nogpgcheck install nginx \
-                && yum clean all
+                && yum -y -q --nogpgcheck install nginx \
+                && yum -q clean all
 
 # Forward request and error logs to Docker log collector.
 RUN             ln -sf /dev/stdout /var/log/nginx/access.log \
@@ -35,7 +35,7 @@ EXPOSE          80 443
 # Localize the web files and install Python requirements.
 COPY            app /var/4l/www/
 WORKDIR         /var/4l/www
-RUN             pip install -r requirements.txt
+RUN             pip -q install -r requirements.txt
 
 # Start the secure gateway.
 CMD             ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
