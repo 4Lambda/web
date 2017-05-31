@@ -50,8 +50,7 @@
                     {% for menu_item in menu_items %}
                         {% set template = menu_item + '.html' %}
                         <a class="btn btn-default btn-block {{ menu_item.lower() }}
-                              glyphicon glyphicon-{{ menu_item }}
-                              text-center"
+                              glyphicon glyphicon-{{ menu_item }}"
                            role=button
                            data-toggle=collapse
                            data-target="#collapse{{ menu_item }}"
