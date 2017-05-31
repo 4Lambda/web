@@ -36,6 +36,9 @@ EXPOSE          80 443
 COPY            app /var/4l/www/
 WORKDIR         /var/4l/www
 RUN             pip -q install -r requirements.txt
+RUN             for file in assets/scss/*; do \
+                    python -mscss "$file" > "static/css/$(basename ${file/\.scss/.css})"; \
+                done
 
 # Start the secure gateway.
 CMD             ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
