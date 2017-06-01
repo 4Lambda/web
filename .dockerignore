@@ -1,3 +1,16 @@
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.Python
+**/build/
+**/develop-eggs/
+**/dist/
+**/eggs/
+**/.eggs/
+**/*.egg-info/
+**/*.egg
+**/pip-log.txt
+**/pip-delete-this-directory.txt
 **/*tox*
 **/*git*
 **/.idea*
