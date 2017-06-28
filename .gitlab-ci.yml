@@ -20,28 +20,28 @@ make_image:
   before_script:
     - echo "$GCLOUD_KEY" > key.json
     - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
-    - docker login -u "_json_key" -p "$(cat key.json)" "$GCLOUD_REGISTRY"
+    - docker login -u "_json_key" -p "$(cat key.json)" https://"$GCLOUD_REGISTRY"
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
     - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE:latest"
     - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
-    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:latest"
-    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY/$CI_PROJECT_NAME:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY/$CI_PROJECT_NAME:$CI_COMMIT_REF_NAME"
     - docker push "$CI_REGISTRY_IMAGE"
-    - docker push "$GCLOUD_REGISTRY_IMAGE"
+    - docker push "$GCLOUD_REGISTRY/$CI_PROJECT_NAME"
 trigger_deployment:
   stage: deploy
   only:
-    - master@4lambda/web
+    - master
   script:
     - curl -X POST
      -F token="$TOKEN"
      -F "ref=master"
      -F "variables[TARGET_PROJECT_NAME]=$CI_PROJECT_NAME"
      -F "variables[TARGET_COMMIT_REF_NAME]=$CI_COMMIT_REF_NAME"
-     -F "variables[GCLOUD_REGISTRY_IMAGE]=$GCLOUD_REGISTRY_IMAGE"
+     -F "variables[GCLOUD_REGISTRY_IMAGE]=$GCLOUD_REGISTRY/$CI_PROJECT_NAME"
      -F "variables[GCLOUD_CLUSTER]=$GCLOUD_CLUSTER"
      -F "variables[GCLOUD_PROJECT]=$GCLOUD_PROJECT"
      -F "variables[GCE_ZONE]=$GCE_ZONE"
-     https://gitlab.com/api/v4/projects/2257388/trigger/pipeline
+     "$CI_TRIGGER_TARGET"
 
