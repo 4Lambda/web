@@ -1,13 +1,14 @@
 stages:
   - test
-  - package
-  - deploy
+  - build
 lint:
-  image: python:2
+  image: python:3.6
   stage: test
+  services:
+  - name: mongo:4.0.1
+    alias: localhost
   before_script:
-    - pip install tox
-    - cd app
+    - pip install .[ci]
   script:
     - tox -e flake8
 make_image:
@@ -16,13 +17,14 @@ make_image:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
-  stage: package
+  stage: build
   before_script:
     - echo "$GCLOUD_KEY" > key.json
     - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
     - docker login -u "_json_key" -p "$(cat key.json)" https://"$GCLOUD_REGISTRY"
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
+  after_script:
     - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE:latest"
     - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
     - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" "$GCLOUD_REGISTRY/$CI_PROJECT_NAME:latest"

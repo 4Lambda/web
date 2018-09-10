@@ -1,1 +1,0 @@
-Russell Bunch <rusty@4lambda.io>
