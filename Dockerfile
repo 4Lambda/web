@@ -6,7 +6,7 @@ RUN             yum install -y \
                     pcre-devel \
                     nginx \
                     supervisor \
-                && yum -q clean all
+                && yum clean -q all
 
 # Add system configuration and run files.
 ADD             nginx.conf /etc/nginx
