@@ -11,7 +11,7 @@ lint:
     - pip install .[ci]
   script:
     - tox -e flake8
-make_image:
+containerize:
   image: docker:latest
   services:
     - docker:dind
