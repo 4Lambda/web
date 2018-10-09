@@ -1,6 +1,6 @@
 # Web with Python
 
-Seen at https://.4lambda.io, the landing page for **4λ**
+Seen at https://4lambda.io, the landing page for **4λ**
 
 ### License & Copyright
 
