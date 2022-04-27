@@ -52,3 +52,4 @@ sast:
 include:
 - template: Security/SAST.gitlab-ci.yml
 - template: DAST.gitlab-ci.yml
+- template: Security/Container-Scanning.gitlab-ci.yml
