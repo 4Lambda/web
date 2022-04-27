@@ -9,9 +9,9 @@ stages:
 - dast
 - build
 - test
-
-# Include the DAST template
-
+env:
+  DOCKER_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  DOCKERFILE_PATH: ./Dockerfile
 dast:
   stage: dast
   dast_configuration:
