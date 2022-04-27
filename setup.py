@@ -27,7 +27,7 @@ setup(
             'pytest-cov',
         ],
         'server': [
-            'uwsgi<=2.0.17',
+            'uwsgi<=2.0.20',
         ],
     },
     include_package_data=True,

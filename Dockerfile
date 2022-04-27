@@ -14,14 +14,14 @@ ADD             supervisord.conf /etc/
 VOLUME          /var/log/nginx
 
 # Setup the virtual env directory.
-RUN             pip install virtualenv && virtualenv -p python36 /env
+RUN             pip3 install virtualenv && virtualenv -p python38 /env
 ENV             VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 
 # Add the web app, install it, and then compile assets.
 COPY            --chown=nginx:nginx . /app
 WORKDIR         /app
-RUN             python setup.py install \
-                && pip install .[server]
+RUN             python3 setup.py install \
+                && pip3 install .[server]
 RUN             for file in assets/scss/*; do \
                     python3 -mscss "$file" > "static/css/$(basename ${file/\.scss/.css})"; \
                 done
