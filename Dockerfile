@@ -21,7 +21,8 @@ ENV             VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 # Add the web app, install it, and then compile assets.
 COPY            --chown=nginx:nginx . /app
 WORKDIR         /app
-RUN             python3 setup.py install && \
+RUN             . /env/bin/activate && \
+                python3 -m build && \
                 python3 -m pip --no-cache-dir install .[server] && \
                 for file in assets/scss/*; do \
                     python3 -mscss "$file" > "static/css/$(basename ${file/\.scss/.css})"; \

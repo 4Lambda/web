@@ -32,9 +32,9 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        'flask<1.1.0',
-        'flask_bootstrap<3.4.0.0',
-        'flask_scss==0.5',
+        'flask<=2.1.2',
+        'flask_bootstrap<=3.3.7.1',
+        'flask_scss<=0.5',
     ],
     long_description=readme(),
     name='web',
