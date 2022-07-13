@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: registry.gitlab.com/4lambda/web:v3.0.0c
+        image: ghcr.io/4lambda/web:v3.1.0
         ports:
         - containerPort: 8080
           protocol: TCP
