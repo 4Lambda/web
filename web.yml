@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-deployment
+  namespace: services
   labels:
     app: web
 spec:
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: gcr.io/sylvan-triumph-161508/web:v3.0.0c
+        image: registry.gitlab.com/4lambda/web:v3.0.0c
         ports:
         - containerPort: 8080
           protocol: TCP
