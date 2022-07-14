@@ -17,12 +17,14 @@ spec:
         app: web
     spec:
       containers:
-      - name: web
-        image: ghcr.io/4lambda/web:v3.1.0
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        imagePullPolicy: Always
+       - name: web
+         image: ghcr.io/4lambda/web:v3.1.0
+         ports:
+         - containerPort: 8080
+           protocol: TCP
+         imagePullPolicy: Always
+      imagePullSecrets:
+       - name: ghcr
   strategy:
     type: RollingUpdate
     rollingUpdate:
