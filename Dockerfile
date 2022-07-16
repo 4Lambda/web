@@ -15,7 +15,7 @@ VOLUME          /var/log/nginx
 
 # Setup the virtual env directory.
 # NOTE: Need to callout python3.8 because supervisor installs python36 which overwrites the python3 symlink
-RUN             python3.8 -m virtualenv /env
+RUN             python3.8 -m virtualenv --system-site-packages /env
 ENV             VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 
 # Add the web app, install it, and then compile assets.
